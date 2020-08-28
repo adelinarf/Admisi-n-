@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/playerandenemy-1.png.png" type="Texture" id=1]
+[ext_resource path="res://source/actor/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/playerandenemy-1.png (1).png" type="Texture" id=3]
+[ext_resource path="res://source/nivel.gd" type="Script" id=4]
+[ext_resource path="res://audio/mymusic/fondo.ogg" type="AudioStream" id=5]
+[ext_resource path="res://source/actor/enemy2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fondos.png" type="Texture" id=7]
+[ext_resource path="res://source/ui components/UserPause.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://audio/mymusic/fondo2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://audio/mymusic/fondo3.ogg" type="AudioStream" id=11]
+[ext_resource path="res://source/Camera2D.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.4094, 108.047 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="background" type="TextureRect" parent="CanvasLayer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 424.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bar2" type="VBoxContainer" parent="CanvasLayer"]
+light_mask = 8200
+margin_right = 388.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/Bar2"]
+margin_right = 388.0
+margin_bottom = 256.0
+value = 10.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+fill_mode = 3
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Bar2" groups=[
+"barra",
+]]
+position = Vector2( -1.7053e-13, -617.302 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Bar2/Area2D" groups=[
+"barra",
+]]
+position = Vector2( 50.5627, 735.515 )
+shape = SubResource( 1 )
+
+[node name="UserPause" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="enemy2" parent="." groups=[
+"world",
+] instance=ExtResource( 6 )]
+position = Vector2( 670.307, 173.746 )
+movimiento = 1
+
+[node name="enemy3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 848.632, -213.182 )
+movimiento = 3
+
+[node name="enemy4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 375.905, -498.427 )
+
+[node name="enemy5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 827.435, -835.235 )
+speed = 300
+movimiento = 2
+
+[node name="enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( 351.078, 92.9714 )
+speed = 300
+movimiento = 2
+
+[node name="Player" parent="." groups=[
+"player",
+] instance=ExtResource( 2 )]
+position = Vector2( 450, 496.597 )
+rate_fire = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 513, 330.5 )
+current = true
+smoothing_enabled = true
+smoothing_speed = 1.0
+script = ExtResource( 12 )
+
+[node name="sonidodebackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="background2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="background3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="portal" parent="." instance=ExtResource( 9 )]
+position = Vector2( 513, -1320.68 )
+next_scene = "res://source/ui components/endscreen.tscn"
+[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
+[connection signal="posicion" from="Player" to="enemy" method="_on_Player_posicion"]
+[connection signal="posicion" from="Player" to="enemy3" method="_on_Player_posicion"]
+[connection signal="posicion" from="Player" to="enemy2" method="_on_Player_posicion"]

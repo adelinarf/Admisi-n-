@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/ui components/menuofmusic.gd" type="Script" id=2]
+
+[node name="menu" type="VBoxContainer"]
+margin_right = 72.0
+margin_bottom = 158.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 91.0
+margin_bottom = 29.0
+text = "TYPE"
+
+[node name="slot1" type="HBoxContainer" parent="."]
+margin_top = 33.0
+margin_right = 91.0
+margin_bottom = 70.0
+
+[node name="Label1" type="Label" parent="slot1"]
+margin_top = 4.0
+margin_right = 58.0
+margin_bottom = 33.0
+text = "Option 1"
+
+[node name="CheckBox1" type="CheckBox" parent="slot1"]
+margin_left = 62.0
+margin_right = 86.0
+margin_bottom = 37.0
+
+[node name="slot2" type="HBoxContainer" parent="."]
+margin_top = 74.0
+margin_right = 91.0
+margin_bottom = 111.0
+
+[node name="Label2" type="Label" parent="slot2"]
+margin_top = 4.0
+margin_right = 62.0
+margin_bottom = 33.0
+text = "Option 2"
+
+[node name="CheckBox2" type="CheckBox" parent="slot2"]
+margin_left = 66.0
+margin_right = 90.0
+margin_bottom = 37.0
+
+[node name="slot3" type="HBoxContainer" parent="."]
+margin_top = 115.0
+margin_right = 91.0
+margin_bottom = 152.0
+
+[node name="Label3" type="Label" parent="slot3"]
+margin_top = 4.0
+margin_right = 63.0
+margin_bottom = 33.0
+text = "Option 3"
+
+[node name="CheckBox3" type="CheckBox" parent="slot3"]
+margin_left = 67.0
+margin_right = 91.0
+margin_bottom = 37.0
+
+[node name="accept" type="Button" parent="."]
+margin_top = 156.0
+margin_right = 91.0
+margin_bottom = 191.0
+text = "Accept"
+[connection signal="pressed" from="slot1/CheckBox1" to="." method="_on_CheckBox1_pressed"]
+[connection signal="pressed" from="slot2/CheckBox2" to="." method="_on_CheckBox2_pressed"]
+[connection signal="pressed" from="slot3/CheckBox3" to="." method="_on_CheckBox3_pressed"]
+[connection signal="button_up" from="accept" to="." method="_on_accept_button_up"]
