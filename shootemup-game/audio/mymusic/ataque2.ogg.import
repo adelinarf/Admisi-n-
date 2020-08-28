@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ataque2.ogg-16e2c65e808ab71da37451517d2bcfff.oggstr"
+
+[deps]
+
+source_file="res://audio/mymusic/ataque2.ogg"
+dest_files=[ "res://.import/ataque2.ogg-16e2c65e808ab71da37451517d2bcfff.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

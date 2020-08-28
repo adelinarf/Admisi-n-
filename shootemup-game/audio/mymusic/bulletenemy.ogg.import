@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bulletenemy.ogg-e4d4ddda5ec18026d134f88d8371da77.oggstr"
+
+[deps]
+
+source_file="res://audio/mymusic/bulletenemy.ogg"
+dest_files=[ "res://.import/bulletenemy.ogg-e4d4ddda5ec18026d134f88d8371da77.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
